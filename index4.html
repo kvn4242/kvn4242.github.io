@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Image Example</title>
+    <style>
+      .dice-image {
+        max-width: 300px;
+      }
+    </style>
+    <script>
+      function generateRandomImages() {
+        var diceImages = ["dado1.png", "dado2.png", "dado3.png", "dado4.png", "dado5.png", "dado6.png"];
+        var firstImageIndex = Math.floor(Math.random() * 6); // Generates a random index between 0 and 5
+        var secondImageIndex = Math.floor(Math.random() * 6); // Generates a random index between 0 and 5
+        var thirdImageIndex = Math.floor(Math.random() * 6); // Generates a random index between 0 and 5  
+        var firstImage = diceImages[firstImageIndex];
+        var secondImage = diceImages[secondImageIndex];
+        var thirdImage = diceImages[thirdImageIndex];
+        document.getElementById("diceImage1").src = firstImage;
+        document.getElementById("diceImage2").src = secondImage;
+        document.getElementById("diceImage3").src = thirdImage;
+
+        if ((firstImageIndex==secondImageIndex)&&(firstImageIndex==thirdImageIndex))
+          document.getElementById("emaitza").innerHTML="Hiru dadoak berdinak dira ";
+        else
+          if ((firstImageIndex != secondImageIndex) && (secondImageIndex != thirdImageIndex) && (thirdImageIndex != firstImageIndex))
+            document.getElementById("emaitza").innerHTML="Hirurak desberdinak dira";
+          else
+            document.getElementById("emaitza").innerHTML="2 dado berdinak dira, 1 desberdina.";
+
+        if ((firstImageIndex > secondImageIndex) && (firstImageIndex > thirdImageIndex))
+          document.getElementById ("emaitza2").innerHTML="Maximoa: "+ (firstImageIndex+1);
+        else 
+          if (secondImageIndex>thirdImageIndex)
+            document.getElementById ("emaitza2").innerHTML="Maximoa: "+ (secondImageIndex+1);
+          else 
+            document.getElementById ("emaitza2").innerHTML="Maximoa: "+ (thirdImageIndex+1);
+
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Dadoen jokoa</h1>
+    <button onclick="generateRandomImages()">Bota dadoak</button>
+    <br />
+    <img id="diceImage1" class="dice-image" src="dado1.png" alt="Dice 1" />
+    <img id="diceImage2" class="dice-image" src="dado1.png" alt="Dice 2" />
+    <img id="diceImage3" class="dice-image" src="dado1.png" alt="Dice 3" />
+    <hr>
+    <h1 id="emaitza">Hemen agertuko da emaitza</h1>
+    <p></p>
+    <h1 id="emaitza2">Hemen agertuko da emaitza</h1>
+  </body>
+</html>
